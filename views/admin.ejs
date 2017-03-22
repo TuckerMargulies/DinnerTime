@@ -1,8 +1,15 @@
 <% for (i = 0; i<Recipe.length; i++) {  %>
-  <div > <%= i %> <br>
-      Name:  <%= Recipe[i].recipe %><br>
-      Ingredients  <%= Recipe[i].ingredients %> <br>
-      ID  <%= Recipe[i].id %> <br>
+  <form action="/admin/<%=Recipe[i].id%>/edit?_method=PATCH" method = "post">
+    <input type="text"
+           name="recipe"
+           value="<%=Recipe[i].recipe%>">
+
+    <input type="text"
+           name="ingredients"
+           value="<%=Recipe[i].ingredients%>">
+
+    <input type="submit" value="Edit">
+  </form> <br>
 
   <form action="/admin/<%=Recipe[i].id%>/delete?_method=DELETE" method = "post">
   <input class="submit" type="submit" value="Delete">

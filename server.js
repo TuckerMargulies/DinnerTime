@@ -64,6 +64,21 @@ server.delete('/admin/:id/delete', function (req, res){
     }});
 });
 
+////edit recipe route////
+server.patch('/admin/:id/edit', function (req, res) {
+  Dinner.findById(req.params.id, function (err, foundRecipe){
+    if (err) {
+      console.log(err)
+    } else {
+      foundRecipe.update(req.body, function (seconderr, recipe){
+        if (seconderr){
+          console.log(seconderr)
+        } else {
+          res.redirect(301, '/admin')
+        }});
+    }});
+});
+
 ////// render admin page ///////
 
 server.get('/admin', function (req, res, next){
