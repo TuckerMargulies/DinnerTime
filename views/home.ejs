@@ -1,0 +1,26 @@
+
+<!-- <script>
+$('.GetDinner').on('click', function (){
+  var numberofrecipies = 5
+  console.log("number"),
+  console.log('click number')
+})
+
+</script> -->
+
+<h1 class="title">DinnerTime</h1>
+<form>
+  <input type="number" id="numberofrecipies">  </input>
+</form>
+  <button class="GetDinner"> GetDinner</button>
+<input class="hidden" id="total" value = <%= Recipe.length %> </input>
+
+<% for (i = 0; i<Recipe.length; i++) {  %>
+  <div class= "result<%=i %> hidden" > <%= i %> <br>
+      Name:  <%= Recipe[i].recipe %><br>
+      Ingredients  <%= Recipe[i].ingredients %> <br>
+  </div>
+
+  <br>
+
+<% } %>
