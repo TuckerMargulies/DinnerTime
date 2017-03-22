@@ -8,8 +8,10 @@
     db           = mongoose.connection,
     Schema       = mongoose.Schema;
     Dinner       = require('./models/recipe.js'),
-    jquery       = require('jquery')
-    expressEjsLaouts  = require ('express-ejs-layouts')
+    jquery       = require('jquery'),
+    expressEjsLaouts  = require ('express-ejs-layouts'),
+    methodOverride    = require ('method-override');
+
 
 
 //// router /////
@@ -19,6 +21,7 @@ server.use(bodyParser.urlencoded({
   extended: true
 }))
 server.use(expressEjsLaouts)
+server.use(methodOverride("_method"))
 
 ///// home screen /////
 server.get('/', function (req, res, next){
@@ -36,8 +39,35 @@ server.get('/', function (req, res, next){
 
 
 //// render recipe entry form /////
-server.get('/new', function (req, res, next){
-          res.render('new')
+server.get('/admin', function (req, res, next){
+  Dinner.find( function (err, foundRecipe) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log("foundRecipe " + foundRecipe)
+      res.render('admin', {
+        Recipe:foundRecipe
+      })
+    }
+  })
+})
+
+////delet recipe /////
+server.delete('/admin/:id/delete', function (req, res){
+  Dinner.remove({
+    _id:req.params.id
+  }, function (err) {
+    if(err){
+      console.log(err)
+    } else {
+      res.redirect(301, '/admin')
+    }});
+});
+
+////// render admin page ///////
+
+server.get('/admin', function (req, res, next){
+          res.render('admin')
     		});
 
 ///create new recipe ////
