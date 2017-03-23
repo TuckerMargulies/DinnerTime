@@ -90,18 +90,18 @@ server.get('/', function (req, res, next) {
 //     		});
 //
 // ///create new recipe ////
-// server.post('/new', function (req, res, next){
-//           var newRecipe = req.body
-//           var dinnerSchema = new Dinner (newRecipe)
-//           dinnerSchema.save ( function (err, dinner){
-//             if(err){
-//               console.log(err)
-//             } else {
-//               console.log('save')
-//               res.redirect('/')
-//             }
-//           });
-//     		});
+server.post('/new', function (req, res, next){
+          var newRecipe = req.body
+          var dinnerSchema = new Dinner (newRecipe)
+          dinnerSchema.save ( function (err, dinner){
+            if(err){
+              console.log(err)
+            } else {
+              console.log('save')
+              res.redirect('/')
+            }
+          });
+    		});
 
 //// database set up ///////
 db.on('error', console.error.bind(console, 'database connection error:'));
