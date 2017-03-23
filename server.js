@@ -24,7 +24,13 @@ server.use(expressEjsLaouts)
 server.use(methodOverride("_method"))
 
 server.get('/', function (req, res, next){
-  res.render('home')
+  Dinner.find(function(err, foundRecipe){
+    if (err) {
+      console.log(err)
+    } else {
+  res.render('home', {
+    Recipe:foundRecipe
+  })
 })
 
 // ///// home screen /////
