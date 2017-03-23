@@ -106,6 +106,7 @@ server.post('/new', function (req, res, next){
 //// database set up ///////
 db.on('error', console.error.bind(console, 'database connection error:'));
 
+mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI + '/dinnertime', function () {
   console.log('Database is running....')
 });
