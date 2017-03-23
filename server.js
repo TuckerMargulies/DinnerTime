@@ -23,8 +23,8 @@ server.use(bodyParser.urlencoded({
 server.use(expressEjsLaouts)
 server.use(methodOverride("_method"))
 
-Server.get('/', function (req, res, next){
-  res.render('home')  
+server.get('/', function (req, res, next){
+  res.render('home')
 })
 
 // ///// home screen /////
