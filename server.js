@@ -22,8 +22,9 @@
     mongoose.set('debug', true);
 
     db.on('open', function(){
-      server.listen(PORT);
-      console.log('Listening on port 3000....')
+      server.listen(PORT, process.env.IP || "0.0.0.0", function () {
+              console.log('Listening on port 3000....')
+      });
       })
 
 //// router /////
