@@ -35,7 +35,7 @@ server.use(bodyParser.urlencoded({
 server.use(expressEjsLaouts)
 server.use(methodOverride("_method"))
 
-server.get('/',function(req,res,next){
+server.get('/', function(req,res,next){
   res.render('new')
 })
 //
