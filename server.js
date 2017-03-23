@@ -23,30 +23,20 @@ server.use(bodyParser.urlencoded({
 server.use(expressEjsLaouts)
 server.use(methodOverride("_method"))
 
+///// home screen /////
 server.get('/', function (req, res, next){
-  Dinner.find(function(err, foundRecipe){
+  Dinner.find( function (err, foundRecipe) {
     if (err) {
       console.log(err)
     } else {
-  res.render('home', {
-    Recipe:foundRecipe
+      console.log("foundRecipe " + foundRecipe)
+      res.render('home', {
+        Recipe:foundRecipe
+      })
+    }
   })
 })
 
-// ///// home screen /////
-// server.get('/', function (req, res, next){
-//   Dinner.find( function (err, foundRecipe) {
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       console.log("foundRecipe " + foundRecipe)
-//       res.render('home', {
-//         Recipe:foundRecipe
-//       })
-//     }
-//   })
-// })
-//
 //
 // //// render recipe entry form /////
 // server.get('/admin', function (req, res, next){
