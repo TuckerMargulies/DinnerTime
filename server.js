@@ -13,7 +13,7 @@
     methodOverride    = require ('method-override');
 
 //// database set up ///////
-    db.on('error', console.error.bind(console, 'database connection error:'));
+  db.on('error', console.error.bind(console, 'database connection error:'));
 
     mongoose.connect(MONGO_URI + '/dinnertime', function () {
       console.log('Database is running....')
@@ -36,20 +36,22 @@ server.use(expressEjsLaouts)
 server.use(methodOverride("_method"))
 
 
-
-///// home screen /////
 server.get('/', function (req, res, next){
-  Dinner.find( function (err, foundRecipe) {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log("foundRecipe " + foundRecipe)
-      res.render('home', {
-        Recipe:foundRecipe
-      })
-    }
-  })
+  res.render('new')
 })
+///// home screen /////
+// server.get('/', function (req, res, next){
+//   Dinner.find( function (err, foundRecipe) {
+//     if (err) {
+//       console.log(err)
+//     } else {
+//       console.log("foundRecipe " + foundRecipe)
+//       res.render('home', {
+//         Recipe:foundRecipe
+//       })
+//     }
+//   })
+// })
 
 
 //// render recipe entry form /////
