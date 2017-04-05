@@ -37,9 +37,7 @@ server.use(expressEjsLaouts)
 server.use(methodOverride("_method"))
 
 
-// server.get('/', function (req, res, next){
-//   res.render('new')
-// })
+
 // / home screen /////
 server.get('/', function (req, res, next){
   Dinner.find( function (err, foundRecipe) {
@@ -100,6 +98,12 @@ server.patch('/admin/:id/edit', function (req, res) {
 
 server.get('/admin', function (req, res, next){
           res.render('admin')
+    		});
+
+////// render admin page ///////
+
+server.get('/new', function (req, res, next){
+          res.render('new')
     		});
 
 ///create new recipe ////
