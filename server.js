@@ -39,8 +39,8 @@ server.use(methodOverride("_method"))
 
 // server.get('/', function (req, res, next){
 //   res.render('new')
-})
-
+// })
+// / home screen /////
 server.get('/', function (req, res, next){
   Dinner.find( function (err, foundRecipe) {
     if (err) {
@@ -115,8 +115,3 @@ server.post('/new', function (req, res, next){
             }
           });
     		});
-
-//// server /////
-// server.listen(PORT, function(){
-//   console.log("Fork is listening on " + PORT);
-// });
