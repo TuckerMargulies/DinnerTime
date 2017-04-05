@@ -4,7 +4,7 @@
     PORT         = process.env.PORT || 3000,
     ejs          = require('ejs'),
     mongoose     = require ('mongoose'),
-    MONGO_URI    = process.env.MONGOLAB_URI || "mongodb://localhost:27017",
+    MONGODB_URI    = process.env.MONGODB_URI || "mongodb://localhost:27017",
     db           = mongoose.connection,
     Schema       = mongoose.Schema;
     Dinner       = require('./models/recipe.js'),
@@ -15,7 +15,7 @@
 //// database set up ///////
   db.on('error', console.error.bind(console, 'database connection error:'));
 
-    mongoose.connect(MONGO_URI + '/dinnertime', function () {
+    mongoose.connect(MONGODB_URI + '/dinnertime', function () {
       console.log('Database is running....')
     });
 
