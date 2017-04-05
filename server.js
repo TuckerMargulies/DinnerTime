@@ -37,22 +37,22 @@ server.use(expressEjsLaouts)
 server.use(methodOverride("_method"))
 
 
-server.get('/', function (req, res, next){
-  res.render('new')
-})
-// / home screen /////
 // server.get('/', function (req, res, next){
-//   Dinner.find( function (err, foundRecipe) {
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       console.log("foundRecipe " + foundRecipe)
-//       res.render('home', {
-//         Recipe:foundRecipe
-//       })
-//     }
-//   })
-// })
+//   res.render('new')
+})
+
+server.get('/', function (req, res, next){
+  Dinner.find( function (err, foundRecipe) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log("foundRecipe " + foundRecipe)
+      res.render('home', {
+        Recipe:foundRecipe
+      })
+    }
+  })
+})
 
 
 //// render recipe entry form /////
